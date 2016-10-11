@@ -3,16 +3,6 @@ Maroon: 830127
 Grey: A6A6A6
 Black: #000000
 */
-.navbar-brand {
-    font-style: oblique;
-    font-size: 40px;
-    font-weight: bold;
-    -webkit-text-stroke: 1.5px #7D223E;
-    -webkit-text-fill-color: #F7F7F7;
-    padding: 20px;
-    line-height: 45px;
-    padding-bottom: 80px;
-}
 .navbar-default {
     background-color: #F7F7F7;
     border-radius: 20px;
@@ -33,6 +23,7 @@ ul.nav li>a {
 }
 
 ul.nav li.active-class>a {
+    width:100%;
     -webkit-text-fill-color: #ffffff;
 }
 
@@ -46,10 +37,12 @@ ul.nav li>a:hover {
 }
 
 .vertical-list {
+  margin:auto;
+  width:100%;
   display:block;
   float:left;
   clear: left;
-  padding: 15px;
+  padding-right: 40px;
 }
 
 .btn-primary {
@@ -61,28 +54,6 @@ ul.nav li>a:hover {
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
     background: #830127;
     border: none;
-}
-
-.btn-secondary {
-    background: lightgray;
-    -webkit-text-fill-color: black;
-    border: none;
-}
-.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active, .open>.dropdown-toggle.btn-secondary {
-    background: gray;
-    -webkit-text-fill-color: black;
-    border: none;
-}
-
-.btn-tertiary {
-    background: #830127;
-    -webkit-text-fill-color: #F7F7F7;
-    border-color: #830127;
-}
-.btn-tertiary:hover, .btn-tertiary:focus, .btn-tertiary:active, .btn-tertiary.active, .open>.dropdown-toggle.btn-tertiary {
-    background: lightgray;
-    -webkit-text-fill-color: #F7F7F7;
-    border-color: gray;
 }
 
 .img-small-left{
@@ -104,9 +75,19 @@ ul.nav li>a:hover {
 
 .vertical-center {
   min-height: 100%;
-
   display: flex;
   align-items: center;
+}
+
+.text-center{
+  text-align:center;
+}
+
+.webpage-header{
+    font-style: oblique;
+    font-size: 40px;
+    font-weight: bold;
+    -webkit-text-fill-color: #830127;
 }
 
 body {
