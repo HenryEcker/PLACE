@@ -1,0 +1,13 @@
+{
+  "name": "PLACE-client",
+  "version": "0.0.1",
+  "description": "Build support for the client-side of PLACE.",
+  "author": "Henry Ecker <hecker@umass.edu>",
+  "license": "N/A",
+  "scripts": {
+    "serve": "./node_modules/.bin/http-server -c-1"
+  },
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
+}
