@@ -38,11 +38,12 @@ ul.nav li>a:hover {
 
 .vertical-list {
   margin:auto;
-  width:100%;
+  width:auto;
   display:block;
   float:left;
   clear: left;
   padding-right: 40px;
+  padding-bottom: 15px;
 }
 
 .btn-primary {
@@ -83,11 +84,17 @@ ul.nav li>a:hover {
   text-align:center;
 }
 
-.webpage-header{
+.webpage-header-text{
     font-style: oblique;
     font-size: 40px;
     font-weight: bold;
     -webkit-text-fill-color: #830127;
+}
+
+.webpage-header{
+  border-bottom-style: solid;
+  border-bottom-color: #000000:
+  border-bottom: 1.5px ;
 }
 
 body {
