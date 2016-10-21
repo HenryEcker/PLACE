@@ -1,28 +1,56 @@
-.this-week-container{
+.panel{
       border-radius: 10px;
       border-width: 5px;
       border-style: solid;
       border-color: #830127;
       background-color: #F7F7F7;
-      padding-left: 55px;
-      padding-right:55px;
+      padding-left: 25px;
+      padding-right:25px;
+      padding-bottom: 15px;
 }
 
-.column-header{
-  font-size: 50px;
-  text-decoration: underline;
-  color: #00000;
-  border-style: groove;
-  border-color: #A6A6A6;
-  border-width: 1.5px;
-  border-radius: 20px;
-  padding:7px;
+.interaction-table{
+    color: #00000;
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+    border-radius: 20px;
+    padding: 7px;
 }
-
-.column-subtitle{
+.interaction-row{
 
 }
-
-.column-list-field{
-  
+.interaction-header{
+  font-size: 15px;
+  font-style: oblique;
+      color: #00000;
+      border-style: solid;
+      border-color: black;
+      border-width: 5px;
+      border-radius: 20px;
+      padding: 7px;
 }
+.interaction-cell{
+      color: #00000;
+      border-style: solid;
+      border-color: #A6A6A6;
+      border-width: 1.5px;
+      border-radius: 20px;
+      padding: 7px;
+}
+
+
+.column-header {
+    font-size: 50px;
+    text-decoration: underline;
+    color: #00000;
+    border-style: solid;
+    border-color: #A6A6A6;
+    border-width: 1.5px;
+    border-radius: 20px;
+    padding: 7px;
+}
+
+.column-subtitle {}
+
+.column-list-field {}
