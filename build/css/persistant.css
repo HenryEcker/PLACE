@@ -8,7 +8,7 @@ Black: #000000
     border-radius: 20px;
     border-color: #830127;
     border-width: 10px;
-    padding: 30px;
+    padding: 20px;
 }
 
 ul.nav li.active-class {
@@ -92,11 +92,12 @@ ul.nav li>a:hover {
 }
 
 .webpage-header{
+  padding-top: 6px;
   border-bottom-style: solid;
   border-bottom-color: #000000:
   border-bottom: 1.5px ;
 }
 
 body {
-    background-color: #F7F7F7;
+    background-color: white;
 }

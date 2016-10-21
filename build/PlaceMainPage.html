@@ -12,7 +12,9 @@
     <title> UMass Amherst - Your PLACE: Residential Curriculum</title>
     <!-- Bootstrap's CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link href="css/persistant.css" rel="stylesheet">
+    <link href="css/this-week.css" rel="stylesheet">
 </head>
 
 <body>
@@ -25,29 +27,41 @@
     </div>
     <!--End Header-->
     <hr style="visibility:hidden" />
-    <!--Start Navbar -->
-    <div class="container-fluid">
-        <div class="col-md-3 col-lg-2">
-            <nav class="navbar navbar-default navbar-fixed-side">
-                <div class="btn-group" role="group">
-                    <ul class="list-unstyled vertical-list">
-                        <li>
-                            <a class="btn btn-primary" href="#" role="button">
-                                <span class="glyphicon glyphicon-user"></span> Henry Ecker</a>
-                        </li>
+    <div class="container">
+        <div class="row">
+            <!--Start Navbar -->
+            <div class="col-md-2">
+                <nav class="navbar navbar-default navbar-fixed-side">
+                    <ul class="nav navbar-nav vertical-list">
+                        <li class="active-class"><a href="#">Home</a></li>
+                        <li><a href="#">Interactions</a></li>
+                        <li><a href="#">Initiatives</a></li>
+                        <li><a href="#">Resources</a></li>
+                        <li><a href="#">Feedback</a></li>
                     </ul>
+                </nav>
+            </div>
+            <!--
+            <div class="container-fluid">
+                <div class="col-md-3 col-lg-2">
                 </div>
-                <ul class="nav navbar-nav vertical-list">
-                    <li class="active-class"><a href="#">Home</a></li>
-                    <li><a href="#">Interactions</a></li>
-                    <li><a href="#">Initiatives</a></li>
-                    <li><a href="#">Resources</a></li>
-                    <li><a href="#">Feedback</a></li>
-                </ul>
-            </nav>
+            </div>
+          -->
+            <!-- End Navbar -->
+            <!--Start This Week Colomn-->
+            <div class="col-md-5">
+                <div class="this-week-container">
+                    <h1 class="column-header text-left">This Week</h1>
+                    <h3 class="column-subtitle text-left">RASC Interactions</h3>
+                    <h3 class="column-subtitle text-left">Out of RASC Interactions</h3>
+                </div>
+            </div>
+            <!--End This Week Colomn-->
+            <div class="col-md-5">
+                .col-md-4
+            </div>
         </div>
     </div>
-    <!-- End Navbar -->
     <!-- End HTML -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
