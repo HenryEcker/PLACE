@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "description": "Build support for the PLACE-client.",
   "author": "Henry Ecker",
-  "license": "",
+  "license": "MIT",
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
-    "serve": "./node_modules/.bin/webpack-dev-server --content-base build"
+    "build": "webpack",
+    "serve": "webpack-dev-server --content-base build"
   },
   "devDependencies": {
     "babel": "^6.3.26",
@@ -16,8 +16,10 @@
     "babel-preset-react": "^6.3.13",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.14.0",
+    "history": "^1.17.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
+    "react-router": "^1.0.3",
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1"
   }

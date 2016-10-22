@@ -1,4 +1,6 @@
 # Ignores your built application.
 build/js/app.js
+# Ignore Generic Mac Files
 .DS_Store
+#Ignore NPM Debug Log
 npm-debug.log
