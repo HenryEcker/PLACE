@@ -1,5 +1,6 @@
-import React from "react"
-import InteractionRow from "./InteractionRow"
+import React from "react";
+import InteractionRow from "./InteractionRow";
+import {Table} from "react-bootstrap";
 
 export default class InteractionTable extends React.Component{
   render(){
@@ -13,7 +14,7 @@ export default class InteractionTable extends React.Component{
 
         <h3 className="column-subtitle text-left">{this.props.children}</h3>
         <div className="row">
-        <table className="table interaction-table">
+        <Table  hover responsive>
             <thead>
                 <tr className="interaction-header-row">
                     <th className="interaction-header">Date</th>
@@ -25,13 +26,11 @@ export default class InteractionTable extends React.Component{
             {
               interactions.map((interaction)=>{
                 return (
-                  <InteractionRow date={interaction[0]} resident={interaction[1]} timeSpent={interaction[2]} topic={interaction[3]} id={_.uniqueId("drawer")}>
-                    {interaction[4]}
-                  </InteractionRow>
+                  <InteractionRow date={interaction[0]} resident={interaction[1]} timeSpent={interaction[2]} topic={interaction[3]} inDepthInfo= {interaction[4]} id={_.uniqueId("drawer")} />
                 );
               })
             }
-        </table>
+        </Table>
         <button type="button" className="btn btn-primary btn-lg">Add Interaction +</button>
 
 
@@ -40,80 +39,3 @@ export default class InteractionTable extends React.Component{
       );
   }
 }
-
-/*
-<tbody>
-    <tr className="interaction-row" data-toggle="collapse" data-target="#demo1">
-        <td className="interaction-cell">10/19/16</td>
-        <td className="interaction-cell">Jane Doe</td>
-        <td className="interaction-cell">1 hour 15 minutes</td>
-        <td className="interaction-cell">Career Exploration</td>
-    </tr>
-    <tr colSpan="2" className="interaction-row" data-toggle="collapse" data-target="#demo1">
-        <td className="hiddenRow">
-            <div className="collapse" id="demo1">
-                <table className="table interaction-table">
-                    <thead>
-                        <tr className="interaction-header-row">
-                            <th className="interaction-header">
-                                Description
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className="interaction-row">
-                            <td className="interaction-cell">
-                                <p>
-                                    DATA
-                                </p>
-                            </td>
-                            <td className="interaction-cell">
-                                <a href="#" className="btn btn-default btn-sm">
-                                    <i className="glyphicon glyphicon-cog"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </td>
-    </tr>
-    <tr className="interaction-row" data-toggle="collapse" data-target="#demo2">
-        <td className="interaction-cell">10/21/16</td>
-        <td className="interaction-cell">John Smith</td>
-        <td className="interaction-cell">35 minutes</td>
-        <td className="interaction-cell">Stress Management</td>
-    </tr>
-    <tr colSpan="12" className="interaction-row" data-toggle="collapse" data-target="#demo2">
-        <td className="hiddenRow">
-            <div className="collapse" id="demo2">
-                <table className="table interaction-table">
-                    <thead>
-                        <tr>
-                            <th>
-                                Description
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <p>
-                                    DATA
-                                </p>
-                            </td>
-                            <td>
-                                <a href="#" className="btn btn-default btn-sm">
-                                    <i className="glyphicon glyphicon-cog"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </td>
-    </tr>
-</tbody>
-*/

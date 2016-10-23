@@ -1,26 +1,28 @@
-import React from "react"
+import React from "react";
+import {Table} from "react-bootstrap";
 
-export default class InteractionRow extends React.Component{
-  render(){
-      //Date Name TimeSpent Topic Details
-      var uId = this.props.id;
-      return (
-        <div>
-            <tbody>
-                  <tr className="interaction-row" data-toggle="collapse" data-target={"#"+uId}>
-                    <td className="interaction-cell">{this.props.date}</td>
-                    <td className="interaction-cell">{this.props.resident}</td>
-                    <td className="interaction-cell">{this.props.timeSpent}</td>
-                    <td className="interaction-cell">{this.props.topic}</td>
+export default class InteractionRow extends React.Component {
+    render() {
+        this.state = {
+            open: false
+        };
+        return (
+            <div>
+                <tbody>
+                    <tr className="interaction-row" data-toggle="collapse" data-target={"#" + this.props.id} >
+                        <td className="interaction-cell">{this.props.date}</td>
+                        <td className="interaction-cell">{this.props.resident}</td>
+                        <td className="interaction-cell">{this.props.timeSpent}</td>
+                        <td className="interaction-cell">{this.props.topic}</td>
                     </tr>
-                    <tr colSpan="12" className="interaction-row" data-toggle="collapse" data-target={"#"+uId}>
-                        <td className="hiddenRow">
-                            <div className="collapse" id={uId}>
-                                <table className="table interaction-table">
+                    <tr className="interaction-row" data-toggle="collapse" data-target={"#" + this.props.id}>
+                        <td colSpan="12" className="hiddenRow">
+                            <div className="collapse" id={this.props.id}>
+                                <Table bsClass="table interaction-table">
                                     <thead>
                                         <tr className="interaction-header-row">
                                             <th className="interaction-header">
-                                                Description
+                                                Notes:
                                             </th>
                                             <th></th>
                                         </tr>
@@ -29,22 +31,25 @@ export default class InteractionRow extends React.Component{
                                         <tr className="interaction-row">
                                             <td className="interaction-cell">
                                                 <p>
-                                                    {this.props.children}
+                                                    {this.props.inDepth}
                                                 </p>
                                             </td>
                                             <td className="interaction-cell">
-                                                <a href="#" className="btn btn-default btn-sm">
+                                                <a href="#" className="btn btn-default btn-sm pull-right">
                                                     <i className="glyphicon glyphicon-cog"></i>
                                                 </a>
                                             </td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </Table>
                             </div>
                         </td>
                     </tr>
-            </tbody>
-        </div>
-      );
-  }
+                </tbody>
+            </div>
+        );
+    }
 }
+/*
+
+*/
