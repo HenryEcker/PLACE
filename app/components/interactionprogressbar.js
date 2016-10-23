@@ -1,9 +1,13 @@
 import React from "react"
 import { ProgressBar } from 'react-bootstrap';
 
-//Props percent barType children minutesLeft
 export default class InteractionProgressBar extends React.Component{
   render(){
+    function getsbStyle(percent){
+      if(percent<=35) return "danger";
+      if(percent<=70) return "warning";
+      else return "success";
+    }
       return (
             <div>
             <h2 className="progess-header"> {this.props.children} </h2>
@@ -14,10 +18,4 @@ export default class InteractionProgressBar extends React.Component{
             </div>
       );
   }
-}
-
-function getsbStyle(percent){
-  if(percent<=35) return "danger";
-  if(percent<=70) return "warning";
-  else return "success";
 }
