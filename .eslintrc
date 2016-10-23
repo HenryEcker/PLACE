@@ -26,8 +26,12 @@
     "commonjs": true
   },
   "plugins": [
-    "react"
+    "react",
+    "underscore"
   ],
+  "globals": {
+        "_": true
+  },
   "rules": {
     // Rules for React (see list here: https://github.com/yannickcr/eslint-plugin-react)
     "react/no-unknown-property": 1,
