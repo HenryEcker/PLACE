@@ -3,4 +3,5 @@ build/js/app.js
 # Ignore Generic Mac Files
 .DS_Store
 #Ignore NPM Debug Log
+node_modules
 npm-debug.log
