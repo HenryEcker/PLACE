@@ -9,10 +9,10 @@ export default class InteractionRow extends React.Component {
         return (
             <tbody>
                 <tr className="interaction-row" data-toggle="collapse" data-target={"#" + this.props.id}>
-                    <td className="interaction-cell">{this.props.date}</td>
-                    <td className="interaction-cell">{this.props.resident}</td>
-                    <td className="interaction-cell">{this.props.timeSpent}</td>
-                    <td className="interaction-cell">{this.props.topic}</td>
+                    <td className="interaction-cell">{this.props.interaction.date}</td>
+                    <td className="interaction-cell">{this.props.interaction.resident}</td>
+                    <td className="interaction-cell">{this.props.interaction.timeSpent} Minutes</td>
+                    <td className="interaction-cell">{this.props.interaction.topic}</td>
                 </tr>
                 <tr className="interaction-row" data-toggle="collapse" data-target={"#" + this.props.id}>
                     <td colSpan="12" className="hiddenRow">
@@ -30,7 +30,7 @@ export default class InteractionRow extends React.Component {
                                     <tr className="interaction-row">
                                         <td className="interaction-cell">
                                             <p>
-                                                {this.props.inDepth}
+                                                {this.props.interaction.inDepthInfo}
                                             </p>
                                         </td>
                                         <td className="interaction-cell">

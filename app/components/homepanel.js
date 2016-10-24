@@ -1,55 +1,52 @@
 import React from 'react';
-import InteractionProgressBar from "./InteractionProgressBar";
-import InteractionTable from "./InteractionTable";
-import InitiativeTable from "./InitiativeTable";
+import InteractionProgressBar from "./interactions/InteractionProgressBar";
+import InteractionTable from "./interactions/InteractionTable";
+import InitiativeTable from "./initiatives/InitiativeTable";
+import Pane from './Pane';
 
 export default class HomePanel extends React.Component {
     render() {
-        //Title Done Total
-        var progressBarList = [
-            [
-                "Total Hours", 170, 450
-            ],
-            [
-                "Rasc Hours", 110, 150
-            ],
-            ["Out of RASC Hours", 60, 300]
-        ];
-        function getPercent(minutesDone, totalMinutes) {
-            return Math.floor((minutesDone / totalMinutes) * 100);
-        }
         return (
             <div className="row">
                 <h1>
-                    Welcome Henry Ecker - Peer Mentor 4th Floor Dickinson
+                    {"Welcome " + this.props.user.name + " - " + this.props.user.positionTitle + " " + this.props.user.location}
                 </h1>
-                <div className="col-md-6" id="RascInteractionPanel">
-                    <div className="panel this-week-container">
+                <Pane>
+                    <div>
                         <h1 className="column-header text-left">This Week</h1>
                         <div className="row">
-                            {progressBarList.map((values) => {
-                                return <InteractionProgressBar percent={getPercent(values[1], values[2])} minutesLeft={values[2] - values[1]}>
-                                    {values[0]}</InteractionProgressBar>
-                            })}
+                            {_.map(this.props.user.progress, function(value) {
+                                return (
+                                    <InteractionProgressBar key={_.uniqueId()} progress={value}>
+                                        {value.title}
+                                    </InteractionProgressBar>
+                                );
+                            })
+}
                         </div>
                     </div>
-                    <div className="panel this-week-container">
-                        <InitiativeTable/>
-                    </div>
-                </div>
-                <div className="col-md-6">
-                    <div className="panel this-week-container">
-                        <InteractionTable >
-                            RASC Interactions
-                        </InteractionTable>
-                    </div>
-                    <div className="panel this-week-container">
-                        <InteractionTable >
-                            Out of RASC Interactions
-                        </InteractionTable>
-                    </div>
-                </div>
+                    <InitiativeTable/>
+                </Pane>
+                <Pane>
+                  {
+                    _.map((this.props.interactions), function(type){
+                      return(<InteractionTable interactions={type.interactions}>
+                          {type.header}
+                      </InteractionTable>);
+                    })
+                  }
+                </Pane>
             </div>
         );
     }
 }
+
+/*
+
+  <InteractionTable interactions={this.props.interactions.rascInteractions.interactions}>
+      {this.props.interactions.rascInteractions.header}
+  </InteractionTable>
+  <InteractionTable interactions={this.props.interactions.outOfRascInteractions}>
+      {this.props.interactions.outOfRascInteractions.header}
+  </InteractionTable>
+*/
