@@ -2,6 +2,99 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 var initialData = {
+  //Requirements for everyone
+  "requirements":{
+    "pm":{
+      "totalTime":["Total Hours",450],
+      "inRascTime":["RASC Hours", 150],
+      "outRascTime":["Out of RASC Hours", 300]
+    }
+  },
+  //Initiatives for everyone
+  "initiatives":{
+    "pm":{
+
+    }
+  },
+  //all users
+  "users":{
+    "1":{
+      "_id":1,
+      "position":"Peer Mentor",
+      "name": "Henry Ecker",
+      "progress":{
+        "totalTime":170,
+        "inRascTime":110,
+        "outRascTime":60
+      },
+      "location": "Dickinson 4th Floor",
+      "log": 1
+    }
+  },
+  //userLogs
+  "userLogs":{
+    "1":{
+      "_id":1,
+      "interactionList":[1,2,3,4,5,6]
+    }
+  },
+  //All Interactions
+  "interactions":{
+    "1":{
+      "_id":1,
+      "location":"RASC",
+      "date": "10/17/16",
+      "resident": "John Smith",
+      "timeSpent": 45,
+      "topic":"Stress Management",
+      "inDepthInfo": "Concerned about upcoming Test"
+    },
+    "2":{
+      "_id":2,
+      "location":"outOfRASC",
+      "date": "10/18/16",
+      "resident": "Jane Doe",
+      "timeSpent": 15,
+      "topic":"Career Exploration",
+      "inDepthInfo": "Wants to be a doctor"
+    },
+    "3":{
+      "_id":3,
+      "location":"outOfRASC",
+      "date": "10/19/16",
+      "resident": "Tim Matthews",
+      "timeSpent": 55,
+      "topic":"Stress Management",
+      "inDepthInfo": "Concerned about upcoming Test"
+    },
+    "4":{
+      "_id":4,
+      "location":"RASC",
+      "date": "10/20/16",
+      "resident": "Max Smith",
+      "timeSpent": 75,
+      "topic":"Stress Management",
+      "inDepthInfo": "Concerned about upcoming Test"
+    },
+    "5":{
+      "_id":5,
+      "location":"outOfRASC",
+      "date": "10/21/16",
+      "resident": "Trevor Davidson",
+      "timeSpent": 85,
+      "topic":"Study Skills",
+      "inDepthInfo": "Helped Prepare for upcoming Test"
+    },
+    "6":{
+      "_id":6,
+      "location":"outOfRASC",
+      "date": "10/22/16",
+      "resident": "Kayla Jones",
+      "timeSpent": 45,
+      "topic":"Stress Management",
+      "inDepthInfo": "Concerned about upcoming Test"
+    }
+  }
 };
 
 var data = JSON.parse(localStorage.getItem('place_data'));
@@ -78,5 +171,5 @@ class ResetDatabase extends React.Component {
 
 ReactDOM.render(
   <ResetDatabase />,
-  document.getElementById('fb-db-reset')
+  document.getElementById('place-db-reset')
 );

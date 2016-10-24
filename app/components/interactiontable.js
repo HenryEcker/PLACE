@@ -6,7 +6,7 @@ export default class InteractionTable extends React.Component{
   render(){
       //Date Name TimeSpent Topic Details
       var interactions=[
-        ["MM/DD/YY","Some Student","X hour Y minutes","TOPIC","They want to X. I told them Y."],
+        ["MM/DD/YY","Some Student","X hours Y minutes","TOPIC","They want to X. I told them Y."],
         ["MM/DD/YY", "Some Different Student", "Y Minutes", "TOPIC","They want to X. I told them Y."]
       ];
       return (

@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import HomePanel from './components/HomePanel';
 
+
 ReactDOM.render(
-  <HomePanel/>,
+  <HomePanel />,
   document.getElementById('MainPanel')
 );
