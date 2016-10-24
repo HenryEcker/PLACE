@@ -4,7 +4,7 @@ import {Table} from "react-bootstrap";
 export default class IntiativeTableRow extends React.Component {
     render() {
         return (
-            <div>
+            <tbody>
                 <tr className="interaction-row" data-toggle="collapse" data-target={"#" + this.props.id}>
                     <td className="interaction-cell">{this.props.nameOfInitiative}</td>
                     <td className="interaction-cell">{this.props.dateRange}</td>
@@ -37,7 +37,7 @@ export default class IntiativeTableRow extends React.Component {
                         </div>
                     </td>
                 </tr>
-            </div>
+            </tbody>
         );
     }
 }

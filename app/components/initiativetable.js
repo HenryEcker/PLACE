@@ -18,7 +18,6 @@ export default class IntiativeTable extends React.Component {
                 <th className="interaction-header">Title</th >
                 <th className="interaction-header">Date Range</th>
                 < /tr></thead >
-                <tbody>
                 {
                   elements.map((intiative)=>{
                     return (
@@ -26,7 +25,6 @@ export default class IntiativeTable extends React.Component {
                     );
                   })
                 }
-                </tbody>
             </Table>
         </div >
     </div>
