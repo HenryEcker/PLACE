@@ -28,84 +28,35 @@ export default class InteractionInputForm extends React.Component {
             );
         }
 
+    updateForm(k,e){
+      e.preventDefault();
+      var update = this.props.initialData;
+      update[k] = e.target.value;
+      this.props.handleInputChange(update);
+    }
+
     render() {
         return (
             <div>
                 <FormGroup controlId={"date"}>
                     <ControlLabel>{"Date of Interaction:"}</ControlLabel>
-                    <FormControl type="date" value={this.props.initialData.date} onChange={(e) => {
-                        e.preventDefault();
-                        this.props.handleInputChange({
-                            date: e.target.value,
-                            resName: this.props.initialData.resName,
-                            rmNum: this.props.initialData.rmNum,
-                            loc: this.props.initialData.loc,
-                            notes: this.props.initialData.notes,
-                            hours: this.props.initialData.hours,
-                            minutes: this.props.initialData.minutes,
-                            otherInput: this.props.initialData.otherInput,
-                            referedInput: this.props.initialData.referedInput,
-                            mentoringReason: this.props.initialData.mentoringReason
-                        })
-                    }} placeholder={"Date"}/>
+                    <FormControl type="date" value={this.props.initialData.date} onChange={(e) => {this.updateForm("date",e)}} placeholder={"Date"}/>
                 </FormGroup>
 
                 <FormGroup controlId={"resName"}>
                     <ControlLabel>{"Resident Name (First Name, Last Name):"}</ControlLabel>
-                    <FormControl value={this.props.initialData.resName} onChange={(e) => {
-                        e.preventDefault();
-                        this.props.handleInputChange({
-                            date: this.props.initialData.date,
-                            resName: e.target.value,
-                            rmNum: this.props.initialData.rmNum,
-                            loc: this.props.initialData.loc,
-                            notes: this.props.initialData.notes,
-                            hours: this.props.initialData.hours,
-                            minutes: this.props.initialData.minutes,
-                            otherInput: this.props.initialData.otherInput,
-                            referedInput: this.props.initialData.referedInput,
-                            mentoringReason: this.props.initialData.mentoringReason
-                        })
-                    }} placeholder={"Resident Name"}/>
+                    <FormControl value={this.props.initialData.resName} onChange={(e) => {this.updateForm("resName",e)}} placeholder={"Resident Name"}/>
                 </FormGroup>
 
                 <FormGroup controlId={"timeResident"}>
                     <ControlLabel>{"About How Much Time Did you Spend with the resident?"}</ControlLabel>
                     <FormGroup validationState={this.props.initialData.timeState} controlId="hours">
                         <InputGroup bsSize="lg">
-                            <FormControl value={this.props.initialData.hours} onChange={(e) => {
-                                e.preventDefault();
-                                this.props.handleInputChange({
-                                    date: this.props.initialData.date,
-                                    resName: this.props.initialData.resName,
-                                    rmNum: this.props.initialData.rmNum,
-                                    loc: this.props.initialData.loc,
-                                    notes: this.props.initialData.notes,
-                                    hours: e.target.value,
-                                    minutes: this.props.initialData.minutes,
-                                    otherInput: this.props.initialData.otherInput,
-                                    referedInput: this.props.initialData.referedInput,
-                                    mentoringReason: this.props.initialData.mentoringReason
-                                })
-                            }} placeholder="Hours"/>
+                            <FormControl value={this.props.initialData.hours} onChange={(e) => {this.updateForm("hours",e)}} placeholder="Hours"/>
                             <InputGroup.Addon>
                                 {" Hours  "}
                             </InputGroup.Addon>
-                            <FormControl value={this.props.initialData.minutes} onChange={(e) => {
-                                e.preventDefault();
-                                this.props.handleInputChange({
-                                    date: this.props.initialData.date,
-                                    resName: this.props.initialData.resName,
-                                    rmNum: this.props.initialData.rmNum,
-                                    loc: this.props.initialData.loc,
-                                    notes: this.props.initialData.notes,
-                                    hours: this.props.initialData.hours,
-                                    minutes: e.target.value,
-                                    otherInput: this.props.initialData.otherInput,
-                                    referedInput: this.props.initialData.referedInput,
-                                    mentoringReason: this.props.initialData.mentoringReason
-                                })
-                            }} placeholder="Minutes"/>
+                            <FormControl value={this.props.initialData.minutes} onChange={(e) => {this.updateForm("minutes",e)}} placeholder="Minutes"/>
                             <InputGroup.Addon>
                                 {" Minutes  "}
                             </InputGroup.Addon>
@@ -115,40 +66,12 @@ export default class InteractionInputForm extends React.Component {
 
                 <FormGroup controlId={"rmNum"}>
                     <ControlLabel>{"Resident Room Number:"}</ControlLabel>
-                    <FormControl value={this.props.initialData.rmNUm} onChange={(e) => {
-                        e.preventDefault();
-                        this.props.handleInputChange({
-                            date: this.props.initialData.date,
-                            resName: this.props.initialData.resName,
-                            rmNum: e.target.value,
-                            loc: this.props.initialData.loc,
-                            notes: this.props.initialData.notes,
-                            hours: this.props.initialData.hours,
-                            minutes: this.props.initialData.minutes,
-                            otherInput: this.props.initialData.otherInput,
-                            referedInput: this.props.initialData.referedInput,
-                            mentoringReason: this.props.initialData.mentoringReason
-                        })
-                    }} placeholder={"Room Number"}/>
+                    <FormControl value={this.props.initialData.rmNUm} onChange={(e) => {this.updateForm("rmNum",e)}} placeholder={"Room Number"}/>
                 </FormGroup>
 
                 <FormGroup controlId="locSelect">
                     <ControlLabel>Where did the interaction take place?</ControlLabel>
-                    <FormControl value={this.props.initialData.loc} onChange={(e) => {
-                        e.preventDefault();
-                        this.props.handleInputChange({
-                            date: this.props.initialData.date,
-                            resName: this.props.initialData.resName,
-                            rmNum: this.props.initialData.rmNum,
-                            loc: e.target.value,
-                            notes: this.props.initialData.notes,
-                            hours: this.props.initialData.hours,
-                            minutes: this.props.initialData.minutes,
-                            otherInput: this.props.initialData.otherInput,
-                            referedInput: this.props.initialData.referedInput,
-                            mentoringReason: this.props.initialData.mentoringReason
-                        })
-                    }} componentClass="select">
+                    <FormControl value={this.props.initialData.loc} onChange={(e) => {this.updateForm("loc",e)}} componentClass="select">
                         <option value="mobrasc">Mobile RASCing</option>
                         <option value="rasc">In the Rasc</option>
                         <option value="outofrasc">Mentoring Hours Outside of RASC Hours</option>
@@ -158,21 +81,7 @@ export default class InteractionInputForm extends React.Component {
                 <FormGroup  controlId="mentoringReason">
                     <ControlLabel>What is your primary reason for your mentoring session with this student?
                     </ControlLabel>
-                    <FormControl onChange={(e) => {
-                        e.preventDefault();
-                        this.props.handleInputChange({
-                            date: this.props.initialData.date,
-                            resName: this.props.initialData.resName,
-                            rmNum: this.props.initialData.rmNum,
-                            loc: this.props.initialData.loc,
-                            notes: this.props.initialData.notes,
-                            hours: this.props.initialData.hours,
-                            minutes: this.props.initialData.minutes,
-                            otherInput: this.props.initialData.otherInput,
-                            referedInput: this.props.initialData.referedInput,
-                            mentoringReason: e.target.value
-                        })
-                    }} value={this.props.initialData.mentoringReason} componentClass="select">
+                    <FormControl onChange={(e) => {this.updateForm("mentoringReason",e)}} value={this.props.initialData.mentoringReason} componentClass="select">
                         <option value="Academic Research">Academic Research
                         </option>
                         <option value="Campus Resource Referal">Campus Resource Referal</option>
@@ -190,21 +99,7 @@ export default class InteractionInputForm extends React.Component {
 
                 <FormGroup controlId={"notes"} bsSize="large">
                     <ControlLabel>{"Notes: Enter specific information documenting your mentoring session with this student. DO NOT ENTER CONFIDENTIAL INFORMATION."}</ControlLabel>
-                    <FormControl value={this.props.initialData.notes} onChange={(e) => {
-                        e.preventDefault();
-                        this.props.handleInputChange({
-                            date: this.props.initialData.date,
-                            resName: this.props.initialData.resName,
-                            rmNum: this.props.initialData.rmNum,
-                            loc: this.props.initialData.loc,
-                            notes: e.target.value,
-                            hours: this.props.initialData.hours,
-                            minutes: this.props.initialData.minutes,
-                            otherInput: this.props.initialData.otherInput,
-                            referedInput: this.props.initialData.referedInput,
-                            mentoringReason: this.props.initialData.mentoringReason
-                        })
-                    }} componentClass="textarea" placeholder={"Notes"}/>
+                    <FormControl value={this.props.initialData.notes} onChange={(e) => {this.updateForm("notes",e)}} componentClass="textarea" placeholder={"Notes"}/>
                 </FormGroup>
             </div>
         );

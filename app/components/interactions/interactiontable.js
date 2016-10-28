@@ -13,13 +13,25 @@ export default class InteractionTable extends React.Component {
                 date: "",
                 resName: "",
                 rmNum: "",
-                loc: "rasc",
+                loc: "mobrasc",
                 notes: "",
                 hours: 0,
                 minutes: 0,
                 otherInput: "",
                 referedInput: "",
                 mentoringReason: "academicResearch"
+            },
+            validationState: {
+                date: "",
+                resName: "",
+                rmNum: "",
+                loc: "",
+                notes: "",
+                hours: "",
+                minutes: "",
+                otherInput: "",
+                referedInput: "",
+                mentoringReason: ""
             }
         }
     }
@@ -28,32 +40,51 @@ export default class InteractionTable extends React.Component {
         this.setState({inputData: update});
     }
 
+    checkForm() {
+        var hours = parseInt(this.state.inputData.hours);
+        if (this.state.inputData.resName === "") {
+            this.setState({
+                validationState: {
+                    date: 'error'
+                }
+            });
+            return false;
+
+        } else if (this.state.inputData.date === "") {
+            return false;
+
+        } else if (this.state.inputData.notes === "") {
+            return false;
+
+        } else if (hours < 0) {
+                return false;
+        } else {
+          return true;
+        }
+    }
+
     handlePost(e) {
         e.preventDefault();
-        var timeSpent = (parseInt(this.state.inputData.hours)*60)+parseInt(this.state.inputData.minutes);
-        postInteraction(
-          this.props.userID,
-          this.state.inputData.resName,
-          this.state.inputData.loc,
-          this.state.inputData.date, timeSpent,
-          this.state.inputData.mentoringReason,
-          this.state.inputData.notes);
-        this.setState({
-            showInputForm: false,
-            inputData: {
-                date: "",
-                resName: "",
-                rmNum: "",
-                loc: "rasc",
-                notes: "",
-                hours: 0,
-                minutes: 0,
-                otherInput: "",
-                referedInput: "",
-                mentoringReason: "Academic Research"
-            }
-        });
-        this.props.submitAction();
+        var timeSpent = (parseInt(this.state.inputData.hours) * 60) + parseInt(this.state.inputData.minutes);
+        if (this.checkForm()) {
+            postInteraction(this.props.userID, this.state.inputData.resName, this.state.inputData.loc, this.state.inputData.date, timeSpent, this.state.inputData.mentoringReason, this.state.inputData.notes);
+            this.setState({
+                showInputForm: false,
+                inputData: {
+                    date: "",
+                    resName: "",
+                    rmNum: "",
+                    loc: "rasc",
+                    notes: "",
+                    hours: 0,
+                    minutes: 0,
+                    otherInput: "",
+                    referedInput: "",
+                    mentoringReason: "Academic Research"
+                }
+            });
+            this.props.submitAction();
+        }
     }
 
     render() {
@@ -83,7 +114,7 @@ export default class InteractionTable extends React.Component {
                             <Modal.Title id="interaction-inpu">Log Your Interaction</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <InteractionInputForm handleInputChange={(v)=>this.handleInputChange(v)} initialData={this.state.inputData}></InteractionInputForm>
+                            <InteractionInputForm handleInputChange={(v) => this.handleInputChange(v)} validationState={this.state.validationState} initialData={this.state.inputData}></InteractionInputForm>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button onClick={(e) => this.handlePost(e)}>
