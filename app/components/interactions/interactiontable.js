@@ -3,7 +3,6 @@ import InteractionRow from "./InteractionRow";
 import InteractionInputForm from './InteractionInputForm';
 import {Button, Table, Modal} from "react-bootstrap";
 import {postInteraction} from '../../server';
-
 export default class InteractionTable extends React.Component {
     constructor(props) {
         super(props);
@@ -22,47 +21,66 @@ export default class InteractionTable extends React.Component {
                 mentoringReason: "academicResearch"
             },
             validationState: {
-                date: "",
-                resName: "",
-                rmNum: "",
-                loc: "",
-                notes: "",
-                hours: "",
-                minutes: "",
-                otherInput: "",
-                referedInput: "",
-                mentoringReason: ""
+                date: null,
+                resName: null,
+                rmNum: null,
+                notes: null,
+                time: null,
+                otherInput: null,
+                referedInput: null
             }
         }
     }
-
     handleInputChange(update) {
         this.setState({inputData: update});
     }
-
+    updateValState(k, v) {
+        var update = this.state.validationState;
+        update[k] = v;
+        this.setState({validationState: update});
+    }
     checkForm() {
         var hours = parseInt(this.state.inputData.hours);
+        var minutes = parseInt(this.state.inputData.minutes);
+        var okay = true;
         if (this.state.inputData.resName === "") {
-            this.setState({
-                validationState: {
-                    date: 'error'
-                }
-            });
-            return false;
-
-        } else if (this.state.inputData.date === "") {
-            return false;
-
-        } else if (this.state.inputData.notes === "") {
-            return false;
-
-        } else if (hours < 0) {
-                return false;
-        } else {
-          return true;
+            this.updateValState("resName", "error");
+            okay = false;
         }
+        if (this.state.inputData.date === "") {
+            this.updateValState("date", "error");
+            okay = false;
+        }
+        if(this.state.inputData.rmNum === ""){
+          this.updateValState("rmNum","error");
+          okay=false;
+        }
+        if (this.state.inputData.notes === "") {
+            this.updateValState("notes", "error");
+            okay = false;
+        }
+        if (this.state.inputData.otherInput === "") {
+            this.updateValState("otherInput", "error");
+            okay = false;
+        }
+        if (this.state.inputData.referedInput === "") {
+            this.updateValState("referedInput", "error");
+            okay = false;
+        }
+        if (isNaN(hours) || hours < 0) {
+            this.updateValState("time", "error");
+            okay = false;
+        }
+        if (isNaN(minutes) || minutes < 0) {
+            this.updateValState("time", "error");
+            okay = false;
+        }
+        if(hours===0 && minutes===0){
+            this.updateValState("time", "error");
+            okay = false;
+        }
+        return okay;
     }
-
     handlePost(e) {
         e.preventDefault();
         var timeSpent = (parseInt(this.state.inputData.hours) * 60) + parseInt(this.state.inputData.minutes);
@@ -86,7 +104,6 @@ export default class InteractionTable extends React.Component {
             this.props.submitAction();
         }
     }
-
     render() {
         let close = () => this.setState({showInputForm: false});
         return (

@@ -4,21 +4,23 @@ import {FormGroup, InputGroup, FormControl, ControlLabel} from "react-bootstrap"
 
 export default class InteractionInputForm extends React.Component {
     getTextareaType(value) {
-        if ("otherAc" === value || "nonAc" === value) {
+        if ("Other Academic topic not listed" === value || "Non-Academic" === value) {
             return (
                 <div>
-                    <FormGroup controlId={"otherInput"} bsSize="large">
+                    <FormGroup validationState={this.props.validationState.otherInput} controlId={"otherInput"} bsSize="large">
                         <ControlLabel>{"Please describe/list below the topics of your interaction (Study abroad, roommate conflict, RSOs/extracurricular activities etc.)"}</ControlLabel>
-                        <FormControl onChange={(e) => this.setState({otherInput: e.target.value})} componentClass="textarea" placeholder={"Other"}/>
+                        <FormControl onChange={(e) => {this.updateForm("otherInput",e)}} componentClass="textarea" placeholder={"Other"}/>
+                        <FormControl.Feedback />
                     </FormGroup>
                 </div>
             );
-        } else if ("resourceRef" === value) {
+        } else if ("Campus Resource Referal" === value) {
             return (
                 <div>
-                    <FormGroup controlId={"referedInput"} bsSize="large">
+                    <FormGroup validationState={this.props.validationState.referedInput} controlId={"referedInput"} bsSize="large">
                         <ControlLabel>{"Please include where students were referred (Learning Resource Center, CCPH, Dean of Students office etc.)."}</ControlLabel>
-                        <FormControl onChange={(e) => this.setState({referedInput: e.target.value})} componentClass="textarea" placeholder={"Referal"}/>
+                        <FormControl onChange={(e) => {this.updateForm("referedInput",e)}} componentClass="textarea" placeholder={"Referal"}/>
+                        <FormControl.Feedback />
                     </FormGroup>
                 </div>
             );
@@ -38,17 +40,19 @@ export default class InteractionInputForm extends React.Component {
     render() {
         return (
             <div>
-                <FormGroup controlId={"date"}>
+                <FormGroup validationState={this.props.validationState.date} controlId={"date"}>
                     <ControlLabel>{"Date of Interaction:"}</ControlLabel>
                     <FormControl type="date" value={this.props.initialData.date} onChange={(e) => {this.updateForm("date",e)}} placeholder={"Date"}/>
+                    <FormControl.Feedback />
                 </FormGroup>
 
-                <FormGroup controlId={"resName"}>
+                <FormGroup validationState={this.props.validationState.resName} controlId={"resName"}>
                     <ControlLabel>{"Resident Name (First Name, Last Name):"}</ControlLabel>
                     <FormControl value={this.props.initialData.resName} onChange={(e) => {this.updateForm("resName",e)}} placeholder={"Resident Name"}/>
+                    <FormControl.Feedback />
                 </FormGroup>
 
-                <FormGroup controlId={"timeResident"}>
+                <FormGroup validationState={this.props.validationState.time} controlId={"timeResident"}>
                     <ControlLabel>{"About How Much Time Did you Spend with the resident?"}</ControlLabel>
                     <FormGroup validationState={this.props.initialData.timeState} controlId="hours">
                         <InputGroup bsSize="lg">
@@ -62,11 +66,13 @@ export default class InteractionInputForm extends React.Component {
                             </InputGroup.Addon>
                         </InputGroup>
                     </FormGroup>
+                    <FormControl.Feedback />
                 </FormGroup>
 
-                <FormGroup controlId={"rmNum"}>
+                <FormGroup validationState={this.props.validationState.rmNum} controlId={"rmNum"}>
                     <ControlLabel>{"Resident Room Number:"}</ControlLabel>
                     <FormControl value={this.props.initialData.rmNUm} onChange={(e) => {this.updateForm("rmNum",e)}} placeholder={"Room Number"}/>
+                    <FormControl.Feedback />
                 </FormGroup>
 
                 <FormGroup controlId="locSelect">
@@ -97,14 +103,16 @@ export default class InteractionInputForm extends React.Component {
                     </FormControl>
                 </FormGroup>
 
-                <FormGroup controlId={"notes"} bsSize="large">
+                {this.getTextareaType(this.props.initialData.mentoringReason)}
+
+                <FormGroup validationState={this.props.validationState.notes} controlId={"notes"} bsSize="large">
                     <ControlLabel>{"Notes: Enter specific information documenting your mentoring session with this student. DO NOT ENTER CONFIDENTIAL INFORMATION."}</ControlLabel>
                     <FormControl value={this.props.initialData.notes} onChange={(e) => {this.updateForm("notes",e)}} componentClass="textarea" placeholder={"Notes"}/>
+                    <FormControl.Feedback />
                 </FormGroup>
             </div>
         );
     }
 }
 /*
-{this.getTextareaType(this.state.mentoringReason)}
 */
