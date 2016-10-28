@@ -8,8 +8,8 @@ var initialData = {
             "name": "Henry",
             "position": "pm",
             "positionTitle": "Peer Mentor",
-            "location": "Dickinson 4th Floor",
-            logs: [1,2],
+            "loc": "Dickinson 4th Floor",
+            logs: [],
             "progress": {
                 "total": {
                     "minutesDone": 0
@@ -49,7 +49,7 @@ var initialData = {
     "interactions": {
         1: {
             "_id": 1,
-            "location": "mobileRASC",
+            "loc": "mobileRASC",
             "date": "10/17/16",
             "resident": "John Smith",
             "timeSpent": 45,
@@ -58,7 +58,7 @@ var initialData = {
         },
         2: {
             "_id": 2,
-            "location": "outOfRASC",
+            "loc": "outOfRASC",
             "date": "10/18/16",
             "resident": "Jane Doe",
             "timeSpent": 15,
@@ -67,7 +67,7 @@ var initialData = {
         },
         3: {
             "_id": 3,
-            "location": "outOfRASC",
+            "loc": "outOfRASC",
             "date": "10/19/16",
             "resident": "Tim Matthews",
             "timeSpent": 55,
@@ -76,7 +76,7 @@ var initialData = {
         },
         4: {
             "_id": 4,
-            "location": "RASC",
+            "loc": "RASC",
             "date": "10/20/16",
             "resident": "Max Smith",
             "timeSpent": 75,
@@ -85,7 +85,7 @@ var initialData = {
         },
         5: {
             "_id": 5,
-            "location": "outOfRASC",
+            "loc": "outOfRASC",
             "date": "10/21/16",
             "resident": "Trevor Davidson",
             "timeSpent": 85,
@@ -94,7 +94,7 @@ var initialData = {
         },
         6: {
             "_id": 6,
-            "location": "outOfRASC",
+            "loc": "outOfRASC",
             "date": "10/22/16",
             "resident": "Kayla Jones",
             "timeSpent": 45,
@@ -104,7 +104,7 @@ var initialData = {
     },
     "templates":{
       "interactions":{
-        location:"",
+        loc:"",
         date:"",
         resident:"",
         timeSpent:0,

@@ -39,104 +39,177 @@ export default class InteractionInputForm extends React.Component {
                             date: e.target.value,
                             resName: this.props.initialData.resName,
                             rmNum: this.props.initialData.rmNum,
-                            location: this.props.initialData.location,
+                            loc: this.props.initialData.loc,
                             notes: this.props.initialData.notes,
                             hours: this.props.initialData.hours,
                             minutes: this.props.initialData.minutes,
                             otherInput: this.props.initialData.otherInput,
-                            referedInput: this.props.referedInput,
-                            mentoringReason: this.props.mentoringReason
+                            referedInput: this.props.initialData.referedInput,
+                            mentoringReason: this.props.initialData.mentoringReason
                         })
                     }} placeholder={"Date"}/>
+                </FormGroup>
+
+                <FormGroup controlId={"resName"}>
+                    <ControlLabel>{"Resident Name (First Name, Last Name):"}</ControlLabel>
+                    <FormControl value={this.props.initialData.resName} onChange={(e) => {
+                        e.preventDefault();
+                        this.props.handleInputChange({
+                            date: this.props.initialData.date,
+                            resName: e.target.value,
+                            rmNum: this.props.initialData.rmNum,
+                            loc: this.props.initialData.loc,
+                            notes: this.props.initialData.notes,
+                            hours: this.props.initialData.hours,
+                            minutes: this.props.initialData.minutes,
+                            otherInput: this.props.initialData.otherInput,
+                            referedInput: this.props.initialData.referedInput,
+                            mentoringReason: this.props.initialData.mentoringReason
+                        })
+                    }} placeholder={"Resident Name"}/>
+                </FormGroup>
+
+                <FormGroup controlId={"timeResident"}>
+                    <ControlLabel>{"About How Much Time Did you Spend with the resident?"}</ControlLabel>
+                    <FormGroup validationState={this.props.initialData.timeState} controlId="hours">
+                        <InputGroup bsSize="lg">
+                            <FormControl value={this.props.initialData.hours} onChange={(e) => {
+                                e.preventDefault();
+                                this.props.handleInputChange({
+                                    date: this.props.initialData.date,
+                                    resName: this.props.initialData.resName,
+                                    rmNum: this.props.initialData.rmNum,
+                                    loc: this.props.initialData.loc,
+                                    notes: this.props.initialData.notes,
+                                    hours: e.target.value,
+                                    minutes: this.props.initialData.minutes,
+                                    otherInput: this.props.initialData.otherInput,
+                                    referedInput: this.props.initialData.referedInput,
+                                    mentoringReason: this.props.initialData.mentoringReason
+                                })
+                            }} placeholder="Hours"/>
+                            <InputGroup.Addon>
+                                {" Hours  "}
+                            </InputGroup.Addon>
+                            <FormControl value={this.props.initialData.minutes} onChange={(e) => {
+                                e.preventDefault();
+                                this.props.handleInputChange({
+                                    date: this.props.initialData.date,
+                                    resName: this.props.initialData.resName,
+                                    rmNum: this.props.initialData.rmNum,
+                                    loc: this.props.initialData.loc,
+                                    notes: this.props.initialData.notes,
+                                    hours: this.props.initialData.hours,
+                                    minutes: e.target.value,
+                                    otherInput: this.props.initialData.otherInput,
+                                    referedInput: this.props.initialData.referedInput,
+                                    mentoringReason: this.props.initialData.mentoringReason
+                                })
+                            }} placeholder="Minutes"/>
+                            <InputGroup.Addon>
+                                {" Minutes  "}
+                            </InputGroup.Addon>
+                        </InputGroup>
+                    </FormGroup>
+                </FormGroup>
+
+                <FormGroup controlId={"rmNum"}>
+                    <ControlLabel>{"Resident Room Number:"}</ControlLabel>
+                    <FormControl value={this.props.initialData.rmNUm} onChange={(e) => {
+                        e.preventDefault();
+                        this.props.handleInputChange({
+                            date: this.props.initialData.date,
+                            resName: this.props.initialData.resName,
+                            rmNum: e.target.value,
+                            loc: this.props.initialData.loc,
+                            notes: this.props.initialData.notes,
+                            hours: this.props.initialData.hours,
+                            minutes: this.props.initialData.minutes,
+                            otherInput: this.props.initialData.otherInput,
+                            referedInput: this.props.initialData.referedInput,
+                            mentoringReason: this.props.initialData.mentoringReason
+                        })
+                    }} placeholder={"Room Number"}/>
+                </FormGroup>
+
+                <FormGroup controlId="locSelect">
+                    <ControlLabel>Where did the interaction take place?</ControlLabel>
+                    <FormControl value={this.props.initialData.loc} onChange={(e) => {
+                        e.preventDefault();
+                        this.props.handleInputChange({
+                            date: this.props.initialData.date,
+                            resName: this.props.initialData.resName,
+                            rmNum: this.props.initialData.rmNum,
+                            loc: e.target.value,
+                            notes: this.props.initialData.notes,
+                            hours: this.props.initialData.hours,
+                            minutes: this.props.initialData.minutes,
+                            otherInput: this.props.initialData.otherInput,
+                            referedInput: this.props.initialData.referedInput,
+                            mentoringReason: this.props.initialData.mentoringReason
+                        })
+                    }} componentClass="select">
+                        <option value="mobrasc">Mobile RASCing</option>
+                        <option value="rasc">In the Rasc</option>
+                        <option value="outofrasc">Mentoring Hours Outside of RASC Hours</option>
+                    </FormControl>
+                </FormGroup>
+
+                <FormGroup  controlId="mentoringReason">
+                    <ControlLabel>What is your primary reason for your mentoring session with this student?
+                    </ControlLabel>
+                    <FormControl onChange={(e) => {
+                        e.preventDefault();
+                        this.props.handleInputChange({
+                            date: this.props.initialData.date,
+                            resName: this.props.initialData.resName,
+                            rmNum: this.props.initialData.rmNum,
+                            loc: this.props.initialData.loc,
+                            notes: this.props.initialData.notes,
+                            hours: this.props.initialData.hours,
+                            minutes: this.props.initialData.minutes,
+                            otherInput: this.props.initialData.otherInput,
+                            referedInput: this.props.initialData.referedInput,
+                            mentoringReason: e.target.value
+                        })
+                    }} value={this.props.initialData.mentoringReason} componentClass="select">
+                        <option value="Academic Research">Academic Research
+                        </option>
+                        <option value="Campus Resource Referal">Campus Resource Referal</option>
+                        <option value="Common Read">Common Read</option>
+                        <option value="Faculty Engagement">Faculty Engagement</option>
+                        <option value="Goal Setting">Goal Setting</option>
+                        <option value="Major/Career Exploration">Major/Career Exploration</option>
+                        <option value="Paper/Essays">Paper/Essays</option>
+                        <option value="Registration and/or Spire">Registration and/or Spire</option>
+                        <option value="Time Management or Organization">Time Management or Organization</option>
+                        <option value="Other Academic topic not listed">Other Academic topic not listed</option>
+                        <option value="Non-Academic">Non-Academic</option>
+                    </FormControl>
+                </FormGroup>
+
+                <FormGroup controlId={"notes"} bsSize="large">
+                    <ControlLabel>{"Notes: Enter specific information documenting your mentoring session with this student. DO NOT ENTER CONFIDENTIAL INFORMATION."}</ControlLabel>
+                    <FormControl value={this.props.initialData.notes} onChange={(e) => {
+                        e.preventDefault();
+                        this.props.handleInputChange({
+                            date: this.props.initialData.date,
+                            resName: this.props.initialData.resName,
+                            rmNum: this.props.initialData.rmNum,
+                            loc: this.props.initialData.loc,
+                            notes: e.target.value,
+                            hours: this.props.initialData.hours,
+                            minutes: this.props.initialData.minutes,
+                            otherInput: this.props.initialData.otherInput,
+                            referedInput: this.props.initialData.referedInput,
+                            mentoringReason: this.props.initialData.mentoringReason
+                        })
+                    }} componentClass="textarea" placeholder={"Notes"}/>
                 </FormGroup>
             </div>
         );
     }
 }
 /*
-
-handleTimeParse(e) {
-e.preventDefault();
-this.setState({
-    hours: e.target.value + (this.state.minutes / 60)
-});
-
-//this.setState({hours:this.state.hours+(this.state.minutes/60)});
-//this.setState({minutes:(this.state.minutes%60)});
-}
-
-timeIsValid() {
-var hrs = parseInt(this.state.hours);
-var mins = parseInt(this.state.minutes);
-if (isNaN(hrs) || hrs < 0 || hrs > 12) {
-    this.setState({timeState: 'error'});
-} else if (isNaN(mins) || mins < 0 || mins > 59) {
-    this.setState({timeState: 'error'});
-} else {
-    this.setState({timeState: ''});
-}
-}
-
-                <FormGroup controlId={"resName"}>
-                    <ControlLabel>{"Resident Name (First Name, Last Name):"}</ControlLabel>
-                    <FormControl value={this.state.resName} onChange={(e) => this.setState({resName: e.target.value})} placeholder={"Resident Name"}/>
-                </FormGroup>
-
-                <FormGroup controlId={"rmNum"}>
-                    <ControlLabel>{"Resident Room Number:"}</ControlLabel>
-                    <FormControl value={this.state.rmNUm} onChange={(e) => this.setState({rmNum: e.target.value})} placeholder={"Room Number"}/>
-                </FormGroup>
-
-                <FormGroup controlId="locationSelect">
-                    <ControlLabel>Where did the interaction take place?</ControlLabel>
-                    <FormControl value={this.state.locationSelect} onChange={(e) => this.setState({locationSelect: e.target.value})} componentClass="select" placeholder="outofrasc">
-                        <option value="rasc">In the Rasc</option>
-                        <option value="mobRasc">Mobile RASCing</option>
-                        <option value="outofrasc">Mentoring Hours Outside of RASC Hours</option>
-                    </FormControl>
-                </FormGroup>
-
-                <FormGroup controlId={"timeResident"}>
-                    <ControlLabel>{"About How Much Time Did you Spend with the resident?"}</ControlLabel>
-                    <FormGroup validationState={this.state.timeState} controlId="hours">
-                        <InputGroup bsSize="lg">
-                            <FormControl value={this.state.hours} onChange={(e) => {
-                                this.setState({hours: e.target.value});
-                                this.timeIsValid();
-                            }} placeholder="Hours"/>
-                            <InputGroup.Addon>
-                                :
-                            </InputGroup.Addon>
-                            <FormControl value={this.state.minutes} onChange={(e) => {
-                                this.setState({minutes: e.target.value});
-                                this.timeIsValid();
-                            }} placeholder="Minutes"/>
-                        </InputGroup>
-                    </FormGroup>
-                </FormGroup>
-
-                <FormGroup onChange={(e) => this.setState({mentoringReason: e.target.value})} controlId="mentoringReason">
-                    <ControlLabel>What is your primary reason for your mentoring session with this student?
-                    </ControlLabel>
-                    <FormControl value={this.state.mentoringReason} componentClass="select">
-                        <option value="academicResearch">Academic Research
-                        </option>
-                        <option value="resourceRef">Campus Resource Referal</option>
-                        <option value="commonRead">Common Read</option>
-                        <option value="facultyEngagement">Faculty Engagement</option>
-                        <option value="goalSetting">Goal Setting</option>
-                        <option value="mcExploration">Major/Career Exploration</option>
-                        <option value="writing">Paper/Essays</option>
-                        <option value="registration">Registration and/or Spire</option>
-                        <option value="timeManagement">Time Management or Organization</option>
-                        <option value="otherAc">Other Academic topic not listed</option>
-                        <option value="nonAc">Non-Academic</option>
-                    </FormControl>
-                </FormGroup>
-                {this.getTextareaType(this.state.mentoringReason)}
-                <FormGroup controlId={"notes"} bsSize="large">
-                    <ControlLabel>{"Notes: Enter specific information documenting your mentoring session with this student. DO NOT ENTER CONFIDENTIAL INFORMATION."}</ControlLabel>
-                    <FormControl value={this.state.notes} onChange={(e) => this.setState({notes: e.target.value})} componentClass="textarea" placeholder={"Notes"}/>
-                </FormGroup>
-            </div>
-            */
+{this.getTextareaType(this.state.mentoringReason)}
+*/

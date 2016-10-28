@@ -29,30 +29,65 @@ export function getLogs(user, cb) {
 
     interactions.rascInteractions.header = "RASC Interactions";
     interactions.rascInteractions.logs = _.filter(myInteractions, function(value) {
-        return (value.location === "RASC") || (value.location === "mobileRASC");
+        return (value.loc === "rasc") || (value.loc === "mobrasc");
     });
 
     interactions.outOfRascInteractions.header = "Out Of Rasc Interactions";
     interactions.outOfRascInteractions.logs = _.filter(myInteractions, function(value) {
-        return value.location === "outOfRASC";
+        return value.loc === "outofrasc";
     });
-    return interactions;
-    //emulateServerReturn(interactions, cb);
+    emulateServerReturn(interactions, cb);
 }
 
-export function getRequirements(user){
+export function getRequirements(user,cb){
   var requirements = readDocument('requirements', readDocument('users',user).position);
-  return requirements;
+  emulateServerReturn(requirements,cb);
 }
 
 export function getInteractionTemplate() {
     return readDocument("templates", "interactions")
 }
 
-export function postInteraction(user, resident, location, date, timeSpent, topic, inDepthInfo) {
+
+export function getProgress(user,cb) {
+    var curUser = readDocument('users',user);
+    var requirements = readDocument('requirements',curUser.position);
+    var progress = {
+        total: {
+            minutesDone: 0,
+            title: "",
+            minutesRequired: 0
+        },
+        rasc: {
+            minutesDone: 0,
+            title: "",
+            minutesRequired: 0
+        },
+        outofrasc: {
+            minutesDone: 0,
+            title: "",
+            minutesRequired: 0
+        }
+    };
+    //Total Time
+    progress.total.minutesDone = curUser.progress.total.minutesDone;
+    progress.total.title = requirements.total.title;
+    progress.total.minutesRequired = requirements.total.minutes;
+    //Rasc Hours
+    progress.rasc.minutesDone = curUser.progress.rasc.minutesDone;
+    progress.rasc.title = requirements.rasc.title;
+    progress.rasc.minutesRequired = requirements.rasc.minutes;
+    //Out of Rasc
+    progress.outofrasc.minutesDone = curUser.progress.outofrasc.minutesDone;
+    progress.outofrasc.title = requirements.outofrasc.title;
+    progress.outofrasc.minutesRequired = requirements.outofrasc.minutes;
+    emulateServerReturn(progress,cb);
+}
+
+export function postInteraction(user, resident, loc, date, timeSpent, topic, inDepthInfo) {
     var blankInteraction = readDocument("templates", "interactions");
     blankInteraction.resident = resident;
-    blankInteraction.location = location;
+    blankInteraction.loc = loc;
     blankInteraction.date = date;
     blankInteraction.timeSpent = timeSpent;
     blankInteraction.topic = topic;
@@ -60,11 +95,16 @@ export function postInteraction(user, resident, location, date, timeSpent, topic
     var filledOutInteraction = blankInteraction;
     var newDoc = addDocument('interactions', filledOutInteraction);
     var curUser = readDocument('users',user);
-    curUser.log = curUser.logs.concat(newDoc._id);
-    writeDocument('users',user);
+    curUser.logs = curUser.logs.concat(newDoc._id);
+    curUser.progress.total.minutesDone += filledOutInteraction.timeSpent;
+    if(filledOutInteraction.loc === "outofrasc"){
+      curUser.progress.outofrasc.minutesDone += filledOutInteraction.timeSpent;
+    } else {
+        curUser.progress.rasc.minutesDone += filledOutInteraction.timeSpent;
+    }
+    writeDocument('users',curUser);
 }
 
 export function getUser(user, cb) {
-    return readDocument('users', user);
-    //emulateServerReturn(readDocument('users', user), cb);
+    emulateServerReturn(readDocument('users', user), cb);
 }

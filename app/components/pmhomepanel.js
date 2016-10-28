@@ -3,64 +3,32 @@ import InteractionProgressBar from "./interactions/InteractionProgressBar";
 import InteractionTable from "./interactions/InteractionTable";
 import InitiativeTable from "./initiatives/InitiativeTable";
 import Pane from './Pane';
-import {getUser, getLogs, getRequirements} from '../server';
+import {getUser, getLogs, getRequirements,getProgress} from '../server';
 
 export default class PMHomePanel extends React.Component {
-
-    getProgress(user) {
-        var requirements = getRequirements(user);
-        var progressDataUser = getUser(user);
-        var progress = {
-            total: {
-                minutesDone: 0,
-                title: "",
-                minutesRequired: 0
-            },
-            rasc: {
-                minutesDone: 0,
-                title: "",
-                minutesRequired: 0
-            },
-            outofrasc: {
-                minutesDone: 0,
-                title: "",
-                minutesRequired: 0
-            }
-        };
-        //Total Time
-        progress.total.minutesDone = progressDataUser.progress.total.minutesDone;
-        progress.total.title = requirements.total.title;
-        progress.total.minutesRequired = requirements.total.minutes;
-        //Rasc Hours
-        progress.rasc.minutesDone = progressDataUser.progress.rasc.minutesDone;
-        progress.rasc.title = requirements.rasc.title;
-        progress.rasc.minutesRequired = requirements.rasc.minutes;
-        //Out of Rasc
-        progress.outofrasc.minutesDone = progressDataUser.progress.outofrasc.minutesDone;
-        progress.outofrasc.title = requirements.outofrasc.title;
-        progress.outofrasc.minutesRequired = requirements.outofrasc.minutes;
-        return progress;
-    }
     constructor(props) {
         super(props);
         this.state = {
-            user: getUser(this.props.userID),
-            logs: getLogs(this.props.userID),
-            progress: this.getProgress(this.props.userID)
+            user: {},
+            logs: {},
+            progress: {},
+            requirements:{}
         }
     }
     refresh() {
-        this.setState({
-            user: getUser(this.props.userID),
-            logs: getLogs(this.props.userID),
-            progress: this.getProgress(this.props.userID)
-        })
+        getUser(this.props.userID, (value) => this.setState({user: value}));
+        getLogs(this.props.userID, (value) => this.setState({logs: value}));
+        getRequirements(this.props.userID, (value)=>this.setState({requirements:value}));
+        getProgress(this.props.userID,(value)=>this.setState({progress:value}));
+    }
+    componentWillMount(){
+      this.refresh();
     }
     render() {
         return (
-            <div className="row">
+            <div className="col-lg-10">
                 <h1>
-                    {"Welcome " + this.state.user.name + " - " + this.state.user.positionTitle + " " + this.state.user.location}
+                    {"Welcome " + this.state.user.name + " - " + this.state.user.positionTitle + " " + this.state.user.loc}
                 </h1>
                 <Pane>
                     <div>
@@ -80,25 +48,14 @@ export default class PMHomePanel extends React.Component {
                 <Pane>
                     {_.map((this.state.logs), function(type) {
                         return (
-                            <InteractionTable className="modal-container" key={type.header} interactions={type.logs}>
+                            <InteractionTable key={type.header} userID={this.props.userID} submitAction={() => this.refresh()} className="modal-container" interactions={type.logs}>
                                 {type.header}
                             </InteractionTable>
                         );
-                    })}
+                    }, this)}
                 </Pane>
 
             </div>
         );
     }
 }
-
-/*
-
-    {_.map((this.state.logs), function(type) {
-        return (
-            <InteractionTable className="modal-container" userID={this.props.userID} submitAction={this.refresh()} key={type.header} interactions={type.logs}>
-                {type.header}
-            </InteractionTable>
-        );
-    })}
-*/
