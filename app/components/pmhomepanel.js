@@ -26,7 +26,7 @@ export default class PMHomePanel extends React.Component {
     }
     render() {
         return (
-            <div className="col-lg-10">
+            <div>
                 <h1>
                     {"Welcome " + this.state.user.name + " - " + this.state.user.positionTitle + " " + this.state.user.loc}
                 </h1>

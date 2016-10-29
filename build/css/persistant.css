@@ -36,16 +36,6 @@ ul.nav li>a:hover {
     -webkit-text-fill-color: #ffffff !important;
 }
 
-.vertical-list {
-  margin:auto;
-  width:auto;
-  display:block;
-  float:left;
-  clear: left;
-  padding-right: 40px;
-  padding-bottom: 15px;
-}
-
 .btn-primary {
     background: #830127;
     -webkit-text-fill-color: #white;
@@ -72,12 +62,6 @@ ul.nav li>a:hover {
     background-position: 50% 50%;
     background-repeat:   no-repeat;
     background-size:     cover;
-}
-
-.vertical-center {
-  min-height: 100%;
-  display: flex;
-  align-items: center;
 }
 
 .text-center{

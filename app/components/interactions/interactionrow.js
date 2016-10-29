@@ -23,7 +23,7 @@ export default class InteractionRow extends React.Component {
                 <tr className="interaction-row" data-toggle="collapse" data-target={"#" + this.props.id}>
                     <td className="interaction-cell">{this.props.interaction.date}</td>
                     <td className="interaction-cell">{this.props.interaction.resident}</td>
-                    <td className="interaction-cell">{timeString} Minutes</td>
+                    <td className="interaction-cell">{timeString}</td>
                     <td className="interaction-cell">{this.props.interaction.topic}</td>
                 </tr>
                 <tr className="interaction-row" data-toggle="collapse" data-target={"#" + this.props.id}>
