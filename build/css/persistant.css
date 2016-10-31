@@ -3,37 +3,10 @@ Maroon: 830127
 Grey: A6A6A6
 Black: #000000
 */
-.navbar-default {
-    background-color: #F7F7F7;
-    border-radius: 20px;
-    border-color: #830127;
-    border-width: 10px;
-    padding: 20px;
-}
 
-ul.nav li.active-class {
-    border-radius: 10px;
-    -webkit-text-fill-color: #F7F7F7;
-    background-color: #830127;
-}
-
-ul.nav li>a {
+.nav li>a {
     -webkit-text-fill-color: #971b2f;
     margin: 5px;
-}
-
-ul.nav li.active-class>a {
-    width:100%;
-    -webkit-text-fill-color: #ffffff;
-}
-
-ul.nav li:hover {
-    background-color: #757575;
-    border-radius: 10px;
-}
-
-ul.nav li>a:hover {
-    -webkit-text-fill-color: #ffffff !important;
 }
 
 .btn-primary {
@@ -42,7 +15,7 @@ ul.nav li>a:hover {
     border: none;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+.btn-primary:hover {
     background: #830127;
     border: none;
 }

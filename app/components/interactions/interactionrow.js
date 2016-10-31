@@ -1,23 +1,9 @@
 import React from "react";
 import {Table} from "react-bootstrap";
 
-
-function parseToHourMinuteForm(time) {
-    var hours = Math.floor(parseInt(time) / 60);
-    var minutes = parseInt(time) % 60;
-    if (minutes === 0) {
-        return hours + " Hours";
-    } else {
-        if (minutes < 10) {
-            minutes = "0" + minutes;
-        }
-        return hours + " Hours " + minutes + " Minutes";
-    }
-}
-
 export default class InteractionRow extends React.Component {
     render() {
-        {var timeString = parseToHourMinuteForm(this.props.interaction.timeSpent)}
+        {var timeString = this.props.parseToHourMinuteForm(this.props.interaction.timeSpent)}
         return (
             <tbody>
                 <tr className="interaction-row" data-toggle="collapse" data-target={"#" + this.props.id}>
